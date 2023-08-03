@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#Quote Generator
+
+Project to learn how to use AWS in the backend in a serverless way and NextJS in the front-end.
+
+Technologies used:
+- NextJS
+- Typescript
+- CSS
+- Styled Components
+
 
 ## Getting Started
 
