@@ -1,4 +1,4 @@
-#Quote Generator
+# Quote Generator
 
 Project to learn how to use AWS in the backend in a serverless way and NextJS in the front-end.
 
