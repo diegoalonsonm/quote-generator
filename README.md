@@ -1,12 +1,17 @@
 # Quote Generator
 
-Project to learn how to use AWS in the backend in a serverless way and NextJS in the front-end.
+Project to learn how to use AWS in the backend in a serverless way and NextJS in the front-end. The project idea is to generate an image with a quote of an important person fetched from the Zenquotes API.
 
 Technologies used:
 - NextJS
 - Typescript
 - CSS
 - Styled Components
+- Material UI
+- CodeSandBox
+- Node JS
+- Zenquotes API
+- 
 
 
 ## Getting Started
