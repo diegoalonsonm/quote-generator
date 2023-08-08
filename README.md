@@ -2,7 +2,7 @@
 
 Project to learn how to use AWS in the backend in a serverless way and NextJS in the front-end. The project idea is to generate an image with a quote of an important person fetched from the Zenquotes API.
 
-Technologies used:
+Stack used:
 - NextJS
 - Typescript
 - CSS
@@ -11,7 +11,9 @@ Technologies used:
 - CodeSandBox
 - Node JS
 - Zenquotes API
-- 
+- AWS Amplify
+- GraphQL
+- Dynamo DB
 
 
 ## Getting Started
