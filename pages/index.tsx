@@ -5,7 +5,10 @@ import Head from 'next/head'
 import Clouds1 from '../assets/cloud-and-thunder.png'
 import Clouds2 from '../assets/cloudy-weather.png'
 
-import { BackgroundImage1, BackgroundImage2, FootCont, FooterLink, GenerateQuoteButton, GenerateQuoteButtonText, GradientBackgroundCon, QuoteGeneratorCon, QuoteGeneratorInnerCon, QuoteGeneratorSubtitle, QuoteGeneratorTitle } from '@/components/QuoteGenerator/QuoteGeneratorElements'
+import { BackgroundImage1, BackgroundImage2, FootCont, FooterLink, GenerateQuoteButton, 
+  GenerateQuoteButtonText, GradientBackgroundCon, QuoteGeneratorCon, QuoteGeneratorInnerCon,
+  QuoteGeneratorSubtitle, QuoteGeneratorTitle } 
+  from '@/components/QuoteGenerator/QuoteGeneratorElements'
 
 export default function Home() {
   const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0)
