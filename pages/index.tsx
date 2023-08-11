@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Head from 'next/head'
 
@@ -10,8 +10,63 @@ import { BackgroundImage1, BackgroundImage2, FootCont, FooterLink, GenerateQuote
   QuoteGeneratorSubtitle, QuoteGeneratorTitle } 
   from '@/components/QuoteGenerator/QuoteGeneratorElements'
 
+import { API } from 'aws-amplify'
+import { quotesQueryName } from '@/src/graphql/queries'
+import { GraphQLResult } from '@aws-amplify/api-graphql'
+
+//create interface for dynamodb
+interface UpdateQuoteInfoData {
+  id: string;
+  queryName: string;
+  quotesGenerated: number;
+  createdAt: string;
+  updatedAt: string
+}
+
+//type guard for fetching data
+function isGraphQLResultForQuotesQueryName(response: any): response is GraphQLResult<{
+  quotesQueryName: {
+    items: [UpdateQuoteInfoData]
+  }
+}> {
+  return response.data && response.data.quotesQueryName && response.data.quotesQueryName.items
+}
+
 export default function Home() {
   const [numberOfQuotes, setNumberOfQuotes] = useState<Number | null>(0)
+
+  //fetch data from dynamodb
+  const updateQuoteInfo = async () => {
+    try {
+      const response = await API.graphql<UpdateQuoteInfoData>({
+        query: quotesQueryName,
+        authMode: "AWS_IAM",
+        variables: {
+          queryName: "LIVE"
+        },
+      })
+      console.log('response from graphql', response)
+
+      // create type guard for response
+      if (!isGraphQLResultForQuotesQueryName(response)) {
+        throw new Error('No response from API.grapql')
+      }
+
+      if(!response.data) {
+        throw new Error('Undefined data')
+      }
+
+      const recievedNumberOfQuotes = response.data.quotesQueryName.items[0].quotesGenerated
+      setNumberOfQuotes(recievedNumberOfQuotes)
+
+    } catch (error) {
+      console.log('error getting data', error)
+    }
+  }
+
+  useEffect(() => {
+    updateQuoteInfo()
+  }, [])
 
   return (
     <>
