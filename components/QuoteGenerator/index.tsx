@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState , useEffect } from 'react'
 
 import { Modal, Backdrop, Fade } from '@mui/material'
 import { ModalCircularProgress, QuoteGeneratorModalCon, QuoteGeneratorModalInnerCon, QuoteGeneratorSubtitle, QuoteGeneratorTitle } from './QuoteGeneratorElements';
@@ -31,6 +31,33 @@ export const QuoteGeneratorModal = ({
 
     const wiseDevQuote = '"If you can center a div, you can do anything."'
     const wiseDevQuoteAuthor = "- a wise Senior Dev"
+
+    const [blobUrl, setBloblUrl] = useState<string | null>(null)
+
+    // handle downloadging quote cards
+    const handleDownload = () => {
+        const link = document.createElement('a');
+        if (typeof blobUrl === 'string') {
+            link.href = blobUrl;
+            link.download = 'quote.png';
+            link.click();
+        }
+    }
+
+    // handle receiving quote card
+    useEffect(() => {
+        if (quoteRecieved) {
+            const binaryData = Buffer.from(quoteRecieved, 'base64');
+            const blob = new Blob([binaryData], {type: "image/png"});
+            const blobUrlGenerated = URL.createObjectURL(blob);
+            console.log(blobUrlGenerated);
+            setBloblUrl(blobUrlGenerated);
+
+            return () => {
+                URL.revokeObjectURL(blobUrlGenerated);
+            }
+        }
+    },[quoteRecieved])
     
     return (
         <Modal
@@ -78,10 +105,12 @@ export const QuoteGeneratorModal = ({
                                 <ImageBlobCon>
                                     <ImageBlob 
                                         quoteRecieved={quoteRecieved}
-                                        blobUrl={bloblUrl}
+                                        blobUrl={blobUrl}
                                     />
                                 </ImageBlobCon>
-                                <AnimatedDownloadButton />
+                                <AnimatedDownloadButton
+                                    handleDownload={handleDownload}
+                                />
                             </>
                         }
                     </QuoteGeneratorModalInnerCon>

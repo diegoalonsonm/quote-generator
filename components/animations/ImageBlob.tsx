@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-export const ImageBlob = () => {
+interface ImageBlobProps {
+    quoteRecieved: String;
+    blobUrl: string | null;
+}
+
+export const ImageBlob = ({quoteRecieved, blobUrl}: ImageBlobProps) => {
     return (
         <div>
             image blob
