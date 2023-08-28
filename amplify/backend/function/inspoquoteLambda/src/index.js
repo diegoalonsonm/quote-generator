@@ -159,7 +159,7 @@ exports.handler = async (event) => {
 
         return {
             statusCode: 200,
-        //  Uncomment below to enable CORS requests
+            //  Uncomment below to enable CORS requests
             headers: {
                 "Content-Type": "image/png",
                 "Access-Control-Allow-Origin": "*",
@@ -169,5 +169,5 @@ exports.handler = async (event) => {
         };
     }
     
-    return await getRandomQuote(apiURL);
+    return await getRandomQuote(apiURL); 
 };
