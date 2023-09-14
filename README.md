@@ -8,13 +8,14 @@ Stack used:
 - CSS
 - Styled Components
 - Material UI
-- CodeSandBox
 - Node JS
 - Zenquotes API
 - AWS Amplify
 - GraphQL
 - Dynamo DB
 
+## Access URL
+Visit the proyect: https://prod.d3l8pp9jp6dwmx.amplifyapp.com/
 
 ## Getting Started
 
