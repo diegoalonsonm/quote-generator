@@ -94,7 +94,7 @@ export const QuoteGeneratorModal = ({
                                 </QuoteGeneratorSubtitle>
                             </>
                         }
-                        {quoteRecieved == null &&
+                        {quoteRecieved !== null &&
                             <>
                                 <QuoteGeneratorTitle>
                                     Download your quote!
